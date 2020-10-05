@@ -1,0 +1,105 @@
+---
+title: "Mi primer Script"
+author: "Christian Castillo"
+date: "21/1/2020"
+output: html_document
+---
+
+```{r configur, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+# Operaciones Básicas
+
+```{r oper_mat}
+6*0.1
+5*9
+8**2
+5/0.0000003
+```
+
+# Asignacion de variables
+```{r aig_var}
+
+a <- 56
+b <- 3
+c <- a / b
+#d <-"Christian"
+
+edades <- c(28,29,23)
+
+edades[1]
+
+class(edades)
+
+
+
+nombre <-c("Adriana","Christian","Neli")
+
+genero <- c("F","M","F")
+
+class(nombre)
+str(nombre)
+
+```
+
+# Data Frames
+
+```{r datafra}
+cl <- data.frame(nombre,edades,genero)
+
+cl$nombre
+cl[,1]
+
+cl$nombre <- as.character(cl$nombre)
+cl
+
+#remover variables
+#rm()
+
+```
+
+# Importación de datos
+
+```{r import}
+library(readxl)
+diamantes <- read_excel("diamantes.xlsx")
+
+diamantes$carat <- as.numeric(diamantes$carat)
+summary(diamantes)
+
+diamantes$cut <- as.factor(diamantes$cut)
+summary(diamantes)
+
+diamantes$clarity <- as.factor(diamantes$clarity)
+diamantes$depth <- as.numeric(diamantes$depth)
+diamantes$table <- as.numeric(diamantes$table)
+diamantes$x <- as.numeric(diamantes$x)
+diamantes$y <- as.numeric(diamantes$y)
+diamantes$z <- as.numeric(diamantes$z)
+
+diamantes$color <- as.factor(diamantes$color)
+
+foo <- list(matrix(data = 1:4,nrow=2,ncol=2),c(23,56,12),c(TRUE,TRUE,TRUE,FALSE))
+
+foo
+
+# attach(diamantes)
+# summary(carat)
+# detach(diamantes)
+# summary(carat)
+
+```
+
+## Estadística Descriptiva
+
+```{r desc}
+
+summary(diamantes [,2:11])
+
+
+```
